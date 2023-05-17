@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: TW51^g37eE1v
+      POSTGRES_DB: portfolio-site-v2
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  portfolio-website-v2-node-api:
+    build: ./portfolio-website-v2-node-api
+    command: npm run start
+    volumes:
+      - ./portfolio-website-v2-node-api:/app
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URL: postgresql://postgres:your_password@db:5432/your_db_name
+    env_file:
+      - ./portfolio-website-v2-node-api/.env
+    depends_on:
+      - db
+
+  portfolio-website-v2:
+    build: ./portfolio-website-v2
+    command: npm run serve
+    volumes:
+      - ./portfolio-website-v2:/app
+    ports:
+      - '8080:8080'
+    depends_on:
+      - portfolio-website-v2-node-api
+
+volumes:
+  db_data:

@@ -1,0 +1,16 @@
+# .gitignore
+
+# Ignore node_modules in any directory
+**/node_modules/
+
+# Ignore env files
+**/.env
+
+# Ignore all log files
+**/*.log
+
+# Ignore all build folders
+**/dist/
+
+# Ignore all .DS_Store (Mac OS)
+**/.DS_Store
