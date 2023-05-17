@@ -4,8 +4,8 @@ services:
   db:
     image: postgres:15
     environment:
-      POSTGRES_PASSWORD: TW51^g37eE1v
-      POSTGRES_DB: portfolio-site-v2
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: name
     ports:
       - '5432:5432'
     volumes:
