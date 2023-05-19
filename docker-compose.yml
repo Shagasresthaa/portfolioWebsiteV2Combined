@@ -4,8 +4,8 @@ services:
   db:
     image: postgres:15
     environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: name
+      POSTGRES_PASSWORD: ${PG_PASS}
+      POSTGRES_DB: ${PG_DBNAME}
     ports:
       - '5432:5432'
     volumes:
